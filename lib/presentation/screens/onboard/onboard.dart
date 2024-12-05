@@ -23,8 +23,8 @@ class OnBoard extends StatelessWidget {
                 Column(
                   children: [
                     Image.asset("assets/images/poster1.jpg",
-                        height: 100, width: 100),
-                    "Online Consultation"
+                        height: 500, width: 500),
+                    "Digitalized Appointments"
                         .text
                         .align(TextAlign.center)
                         .size(15)
@@ -35,7 +35,7 @@ class OnBoard extends StatelessWidget {
                 Column(
                   children: [
                     Image.asset("assets/images/poster2.webp",
-                        height: 100, width: 100),
+                        height: 500, width: 500),
                     "Online Consultation"
                         .text
                         .align(TextAlign.center)
@@ -47,8 +47,8 @@ class OnBoard extends StatelessWidget {
                 Column(
                   children: [
                     Image.asset("assets/images/poster3.webp",
-                        height: 100, width: 100),
-                    "Online Consultation"
+                        height: 500, width: 500),
+                    "Clinical Reports"
                         .text
                         .align(TextAlign.center)
                         .size(15)
