@@ -1,9 +1,15 @@
 part of 'onboard_imports.dart';
 
 @RoutePage()
-class OnBoard extends StatelessWidget {
+class OnBoard extends StatefulWidget {
   const OnBoard({super.key});
 
+  @override
+  State<OnBoard> createState() => _OnBoardState();
+}
+
+class _OnBoardState extends State<OnBoard> {
+  OnBoardViewModel onBoardViewModel = OnBoardViewModel();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,61 +20,33 @@ class OnBoard extends StatelessWidget {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Image.asset(
-              "assets/images/news.png",
-              height: 80,
-              width: 80,
+              ProjAssets.assetsImagesNews,
+              height: 80.h,
+              width: 80.w,
             ),
+            63.h.heightBox,
             PageView(
-              children: [
-                Column(
-                  children: [
-                    Image.asset("assets/images/poster1.jpg",
-                        height: 500, width: 500),
-                    "Digitalized Appointments"
-                        .text
-                        .align(TextAlign.center)
-                        .size(15)
-                        .fontWeight(FontWeight.w500)
-                        .make()
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/poster2.webp",
-                        height: 500, width: 500),
-                    "Online Consultation"
-                        .text
-                        .align(TextAlign.center)
-                        .size(15)
-                        .fontWeight(FontWeight.w500)
-                        .make()
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/poster3.webp",
-                        height: 500, width: 500),
-                    "Clinical Reports"
-                        .text
-                        .align(TextAlign.center)
-                        .size(15)
-                        .fontWeight(FontWeight.w500)
-                        .make()
-                  ],
-                )
+              controller: onBoardViewModel.pageController,
+              children: const [
+                OnBoardFirst(),
+                OnBoardSecond(),
+                OnboardThird(),
               ],
             ).expand(),
+            61.h.heightBox,
             ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: ProjColors.lightprimaryColor,
-                  minimumSize: Size(MediaQuery.of(context).size.width, 44),
+                  minimumSize: Size(MediaQuery.of(context).size.width, 44.h),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(11)),
+                      borderRadius: BorderRadius.circular(11.r)),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  AutoRouter.of(context).push(const AuthRoute());
+                },
                 child: "Get Started"
                     .text
-                    .size(16)
+                    .size(16.sp)
                     .fontWeight(FontWeight.w700)
                     .make()),
             Row(
@@ -77,13 +55,23 @@ class OnBoard extends StatelessWidget {
                 "Skip"
                     .text
                     .color(ProjColors.lightprimaryColor)
-                    .size(16)
+                    .size(16.sp)
                     .fontWeight(FontWeight.w700)
                     .make(),
+                SmoothPageIndicator(
+                    controller:
+                        onBoardViewModel.pageController, // PageController
+                    count: 3,
+                    effect: const WormEffect(
+                      activeDotColor: ProjColors.lightprimaryColor,
+                      dotHeight: 8.0,
+                      dotWidth: 8.0,
+                    ), // your preferred effect
+                    onDotClicked: (index) {}),
                 "Next"
                     .text
                     .color(ProjColors.lightprimaryColor)
-                    .size(16)
+                    .size(16.sp)
                     .fontWeight(FontWeight.w700)
                     .make()
               ],
